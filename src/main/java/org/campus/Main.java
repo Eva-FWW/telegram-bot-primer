@@ -2,10 +2,7 @@ package org.campus;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
-import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.request.SendMessage;
-
-import java.util.List;
 
 public class Main {
     public static final String BOT_TOKEN = "7150481816:AAHOpQWo2VApjNW3JmTLBxnm_eCevzJCgQk";
@@ -16,17 +13,14 @@ public class Main {
         System.out.println("Hello world!");
 
         TelegramBot telegramBot = new TelegramBot(BOT_TOKEN);
-        telegramBot.setUpdatesListener(new UpdatesListener() {
-            @Override
-            public int process(List<Update> list) {
-                for (Update update: list) {
-                    logService.lod(update);
-                    SendMessage sendMessage = new SendMessage(update.message().from().id(), "Напиши какой твой любимый цвет" );
-                    telegramBot.execute((sendMessage));
-                }
+        telegramBot.setUpdatesListener(list -> {
+            list.forEach(update -> {
+                logService.lod(update);
+                SendMessage sendMessage = new SendMessage(update.message().from().id(), "Напиши какой твой любимый цвет");
+                telegramBot.execute((sendMessage));
+            });
 
-                return UpdatesListener.CONFIRMED_UPDATES_ALL;
-            }
+            return UpdatesListener.CONFIRMED_UPDATES_ALL;
         });
     }
 }
