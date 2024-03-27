@@ -2,6 +2,10 @@ package org.campus;
 
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.UpdatesListener;
+import com.pengrad.telegrambot.model.Update;
+import com.pengrad.telegrambot.model.request.Keyboard;
+import com.pengrad.telegrambot.model.request.ParseMode;
+import com.pengrad.telegrambot.model.request.ReplyKeyboardMarkup;
 import com.pengrad.telegrambot.request.SendMessage;
 
 import java.util.HashMap;
@@ -19,13 +23,41 @@ public class Main {
 
         telegramBot.setUpdatesListener(list -> {
             list.forEach(update -> {
-                logService.lod(update);
-                SendMessage sendMessage = new SendMessage(update.message().from().id(), "Напиши какой твой любимый цвет");
-                telegramBot.execute((sendMessage));
+                newMessageFromUser(update);
             });
 
             return UpdatesListener.CONFIRMED_UPDATES_ALL;
         });
+    }
+
+    public static void newMessageFromUser (Update update) {
+        logService.lod(update);
+
+        Long userId = update.message().from().id();
+        if (startMessage(userId)) return;
+
+        SendMessage sendMessage = new SendMessage(update.message().from().id(), "Напиши какой твой любимый цвет");
+        telegramBot.execute((sendMessage));
+    }
+
+    public static Boolean startMessage(Long userId){
+        if(users.containsKey(userId) == false) {
+            users.put(userId, new TGUser(userId));
+
+            SendMessage sendMessage = new SendMessage(userId, Texts.HELLO_MESSAGE);
+            sendMessage.parseMode(ParseMode.Markdown); //чтобы тескт был жирным
+
+            Keyboard replyKeyboardMarkup = new ReplyKeyboardMarkup(Texts.HELLO_MESSAGE_BUTTON)
+                    .oneTimeKeyboard(true)
+                    .resizeKeyboard(true)
+                    .selective(true);
+
+            sendMessage.replyMarkup(replyKeyboardMarkup);
+            telegramBot.execute(sendMessage);
+            return true;
+        }
+
+        return false;
     }
 
 
