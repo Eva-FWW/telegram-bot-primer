@@ -1,5 +1,5 @@
 package org.campus;
 
 public enum LanguageType {
-    SCALPER, INVESTOR, MAXINATOR
+    QA, BACKEND, FRONTEND
 }

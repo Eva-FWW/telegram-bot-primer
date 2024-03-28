@@ -7,9 +7,9 @@ public class TGUser {
     private Long userId;
     private List<Question> questions = new ArrayList<>();
 
-    private Integer scalperPoint = 0;
-    private Integer investorPoint = 0;
-    private Integer maxinatorPoint = 0;
+    private Integer backendPoint = 0;
+    private Integer frontendPoint = 0;
+    private Integer qaPoint = 0;
 
     public TGUser(Long userId) {
         this.userId = userId;
@@ -18,7 +18,38 @@ public class TGUser {
 
     private void fillQuestions(){
         questions.add(new Question(Texts.Q1, Arrays.asList(
-                new Answer(Texts.Q1_A1, LanguageType.SCALPER)
+                new Answer(Texts.Q1_A1, LanguageType.FRONTEND),
+                new Answer(Texts.Q1_A2, LanguageType.FRONTEND),
+                new Answer(Texts.Q1_A3, LanguageType.BACKEND),
+                new Answer(Texts.Q1_A4, LanguageType.QA)
+        )));
+
+        questions.add(new Question(Texts.Q2, Arrays.asList(
+                new Answer(Texts.Q2_A1, LanguageType.FRONTEND),
+                new Answer(Texts.Q2_A2, LanguageType.BACKEND),
+                new Answer(Texts.Q2_A3, LanguageType.QA),
+                new Answer(Texts.Q2_A4, LanguageType.FRONTEND)
+        )));
+
+        questions.add(new Question(Texts.Q3, Arrays.asList(
+                new Answer(Texts.Q3_A1, LanguageType.QA),
+                new Answer(Texts.Q3_A2, LanguageType.FRONTEND),
+                new Answer(Texts.Q3_A3, LanguageType.FRONTEND),
+                new Answer(Texts.Q3_A4, LanguageType.BACKEND)
+        )));
+
+        questions.add(new Question(Texts.Q4, Arrays.asList(
+                new Answer(Texts.Q4_A1, LanguageType.FRONTEND),
+                new Answer(Texts.Q4_A2, LanguageType.FRONTEND),
+                new Answer(Texts.Q4_A3, LanguageType.QA),
+                new Answer(Texts.Q4_A4, LanguageType.BACKEND)
+        )));
+
+        questions.add(new Question(Texts.Q5, Arrays.asList(
+                new Answer(Texts.Q5_A1, LanguageType.FRONTEND),
+                new Answer(Texts.Q5_A2, LanguageType.QA),
+                new Answer(Texts.Q5_A3, LanguageType.FRONTEND),
+                new Answer(Texts.Q5_A4, LanguageType.QA)
         )));
     }
 
@@ -38,27 +69,27 @@ public class TGUser {
         this.questions = questions;
     }
 
-    public Integer getScalperPoint() {
-        return scalperPoint;
+    public Integer getBackendPoint() {
+        return backendPoint;
     }
 
-    public void setScalperPoint(Integer scalperPoint) {
-        this.scalperPoint = scalperPoint;
+    public void setBackendPoint(Integer backendPoint) {
+        this.backendPoint = backendPoint;
     }
 
-    public Integer getInvestorPoint() {
-        return investorPoint;
+    public Integer getFrontendPoint() {
+        return frontendPoint;
     }
 
-    public void setInvestorPoint(Integer investorPoint) {
-        this.investorPoint = investorPoint;
+    public void setFrontendPoint(Integer frontendPoint) {
+        this.frontendPoint = frontendPoint;
     }
 
-    public Integer getMaxinatorPoint() {
-        return maxinatorPoint;
+    public Integer getQaPoint() {
+        return qaPoint;
     }
 
-    public void setMaxinatorPoint(Integer maxinatorPoint) {
-        this.maxinatorPoint = maxinatorPoint;
+    public void setQaPoint(Integer qaPoint) {
+        this.qaPoint = qaPoint;
     }
 }

@@ -32,9 +32,9 @@ public class Texts {
     public static final String Q5_A4 = "Находить даже минимальные расхождения между тем, как должна работать программа, и тем, как она работает сейчас";
 
     public static final String HELLO_MESSAGE = "Привет,\n" +
-            "я сделал бота, что бы помочь определить кто ты в трейдинге.\n" +
+            "я сделал бота, что бы помочь определить кто ты в программировании.\n" +
             "\n" +
-            "*Давай определим, какое направление в трейдинге тебе больше подходит?*";
+            "*Давай определим, какое направление в программировании тебе больше подходит?*";
     public static final String HELLO_MESSAGE_BUTTON = "Поехали!";
 
     public static final String RESULT_MESSAGE = "Вот твои результаты";
@@ -53,6 +53,6 @@ public class Texts {
     public static final String RESULT_MESSAGE_SAME_BOT ="Сделать такого же бота!";
     public static final String RESULT_MESSAGE_LINK ="https://t.me/+DRdteq7XQP8yODMy";
     public static final String RESULT_MESSAGE_RESTART ="Заново!";
-    public static final String RESULT_MESSAGE_BOT_NAME ="@campus_java_bot";
+    public static final String RESULT_MESSAGE_BOT_NAME ="https://t.me/TestRoman57784_bot";
 
 }
